@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Insight Club AUB — Calendar 2026–2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-club">Insight Club · AUB</div>
+      <h1 class="hero-title">Content <span>Calendar</span><br>2026 – 2027</h1>
+      <p class="hero-sub">نادي إنسايت — الجامعة الأمريكية في بيروت</p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-platforms">
+        <span class="platform-tag">📸 Instagram</span>
+        <span class="platform-tag">👥 Facebook</span>
+        <span class="platform-tag">🎵 TikTok</span>
+        <span class="platform-tag">💬 WhatsApp</span>
+      </div>
+      <div class="hero-year">JUNE 2026 → JUNE 2027</div>
+      <button id="edit-toggle-btn">🔒 Edit Calendar</button>
+    </div>
+  </div>
+</header>
+
+<!-- FILTER BAR -->
+<div class="filter-bar-wrap">
+  <div class="filter-bar">
+    <span class="filter-label">Filter</span>
+    <button class="filter-pill active" data-cat="all">✦ All Events</button>
+    <button class="filter-pill" data-cat="S">🕌 Spiritual</button>
+    <button class="filter-pill" data-cat="ATH">🏃 Athletic</button>
+    <button class="filter-pill" data-cat="INT">💡 Intellectual</button>
+    <button class="filter-pill" data-cat="HUGE">⭐ Huge Events</button>
+    <button class="filter-pill" data-cat="SC">🤝 Social</button>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend-bar">
+  <span class="legend-item"><span class="legend-dot S"></span>Spiritual</span>
+  <span class="legend-item"><span class="legend-dot ATH"></span>Athletic</span>
+  <span class="legend-item"><span class="legend-dot INT"></span>Intellectual</span>
+  <span class="legend-item"><span class="legend-dot HUGE"></span>Huge Event</span>
+  <span class="legend-item"><span class="legend-dot SC"></span>Social</span>
+  <span class="legend-item"><span class="legend-dot OFF"></span>No Classes</span>
+  <span class="legend-item"><span class="legend-dot WED"></span>Wed Series</span>
+</div>
+
+<!-- CALENDAR -->
+<main class="main" id="calendar"></main>
+
+<footer class="site-footer">
+  <strong>Insight Club AUB</strong> · Social Media Content Calendar 2026–2027 · All Islamic dates are tentative
+</footer>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<!-- PASSCODE MODAL -->
+<div id="passcode-modal" class="modal-backdrop">
+  <div class="modal-box">
+    <div class="modal-title">Enter Edit Mode</div>
+    <div class="modal-sub">Enter the shared club passcode to add, edit, or remove events.</div>
+    <label class="field-label">Passcode</label>
+    <input type="password" id="passcode-input" placeholder="••••••••"/>
+    <div id="passcode-error" class="modal-error">Incorrect passcode. Try again.</div>
+    <div class="modal-btn-row">
+      <button class="modal-btn modal-btn-secondary" id="passcode-cancel">Cancel</button>
+      <button class="modal-btn modal-btn-primary" id="passcode-submit">Unlock</button>
+    </div>
+  </div>
+</div>
+
+<!-- EVENT ADD/EDIT MODAL -->
+<div id="event-modal" class="modal-backdrop">
+  <div class="modal-box">
+    <div class="modal-title" id="event-modal-title">Add Event</div>
+    <div class="modal-sub" id="event-date-label"></div>
+
+    <label class="field-label">Title (English)</label>
+    <input type="text" id="event-en1" placeholder="e.g. Halaqa Night"/>
+
+    <label class="field-label">Subtitle (optional)</label>
+    <input type="text" id="event-en2" placeholder="e.g. Weekly circle"/>
+
+    <label class="field-label">Arabic (optional)</label>
+    <input type="text" id="event-ar" placeholder="حلقة أسبوعية" dir="rtl"/>
+
+    <label class="field-label">Category</label>
+    <select id="event-cat">
+      <option value="S">🕌 Spiritual</option>
+      <option value="ATH">🏃 Athletic</option>
+      <option value="INT">💡 Intellectual</option>
+      <option value="HUGE">⭐ Huge Event</option>
+      <option value="SC">🤝 Social</option>
+      <option value="OFF">🚫 No Classes</option>
+      <option value="WED">📅 Wed Series</option>
+    </select>
+
+    <div class="modal-btn-row">
+      <button class="modal-btn modal-btn-danger" id="event-delete-btn" style="display:none;">Delete</button>
+      <button class="modal-btn modal-btn-secondary" id="event-cancel-btn">Cancel</button>
+      <button class="modal-btn modal-btn-primary" id="event-save-btn">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="seed_data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
